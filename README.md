@@ -162,7 +162,6 @@ flowchart TD
 | **3D & Animations** | `Three.js` • `Anime.js` • `Framer Motion` • `Canvas Confetti` |
 | **Data Visualization** | `Recharts` • `Chart.js` • `React-Chartjs-2` |
 | **Utilities** | `qrcode.react` • `react-hot-toast` • `react-copy-to-clipboard` • `dayjs` |
-| **DevOps** | `Docker (Multi-Stage Build)` • `Eclipse Temurin JDK 23` |
 
 </div>
 
