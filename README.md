@@ -438,7 +438,7 @@ docker run -d -p 8080:8080 \
 | :--- | :--- | :--- |
 | `spring.datasource.url` | `jdbc:mysql://localhost:3306/url_shortener` | MySQL JDBC URL |
 | `spring.datasource.username` | `root` | Database user |
-| `spring.datasource.password` | `NewPassword123!` | Database password |
+| `spring.datasource.password` | `YOUR_DB_PASS` | Database password |
 | `jwt.secret` | `3844ecd5ed6ac732a712b...` | 256-bit signing key |
 | `jwt.expiration` | `172800000` | Expiration time (48 hours in ms) |
 | `frontend.url` | `http://localhost:5173` | Allowed CORS frontend host |
