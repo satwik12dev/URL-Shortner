@@ -103,41 +103,41 @@
 ## 🏗️ System Architecture
 
 ```mermaid
-graph TB
+flowchart TD
     subgraph Client ["Client Side (React 18 + Vite)"]
-        UI["🎨 Glassmorphic UI (Tailwind + 3D Three.js)"]
-        Router["🧭 React Router v7 (Protected & Public Routes)"]
-        Context["🔑 Global Auth & Theme Context"]
-        AnalyticsUI["📊 Recharts & Chart.js Data Visuals"]
+        UI["Glassmorphic UI (Tailwind & Three.js)"]
+        Router["React Router v7"]
+        Context["Global Auth & Theme Context"]
+        AnalyticsUI["Recharts & Chart.js Visuals"]
     end
 
-    subgraph Gateway ["Security & Filter Pipeline"]
-        CORS["🌐 CORS Security Filter"]
-        JWTFilter["🔒 JWT Authentication Filter"]
+    subgraph SecurityLayer ["Security & Filter Pipeline"]
+        CORSFilter["CORS Security Filter"]
+        JWTFilter["JWT Authentication Filter"]
     end
 
-    subgraph Backend ["Backend Engine (Spring Boot 3.4 / Java 23)"]
-        AuthController["🚪 AuthController (/api/auth)"]
-        UrlController["🔗 UrlMappingController (/api/urls)"]
-        RedirectController["⚡ RedirectController (/{shortUrl})"]
-        UserService["👤 UserService & UserDetailsImpl"]
-        UrlService["⚙️ UrlMappingService"]
+    subgraph Backend ["Backend Engine (Spring Boot 3.4)"]
+        AuthController["AuthController (/api/auth)"]
+        UrlController["UrlMappingController (/api/urls)"]
+        RedirectController["RedirectController (/{shortUrl})"]
+        UserService["UserService"]
+        UrlService["UrlMappingService"]
     end
 
-    subgraph Database ["Persistence Layer (MySQL 8.0)"]
-        UserTable[("👤 Users Table")]
-        UrlTable[("🔗 UrlMappings Table")]
-        ClickTable[("📊 ClickEvents Table")]
+    subgraph Database ["MySQL 8.0 Database"]
+        UserTable[("Users Table")]
+        UrlTable[("UrlMappings Table")]
+        ClickTable[("ClickEvents Table")]
     end
 
     UI --> Router
     Router --> Context
     Router --> AnalyticsUI
-    UI -->|REST Requests (Axios)| CORS
-    CORS --> JWTFilter
+    UI -->|REST API Calls| CORSFilter
+    CORSFilter --> JWTFilter
     JWTFilter --> AuthController
     JWTFilter --> UrlController
-    Router -->|302 Direct Access| RedirectController
+    Router -->|Direct Redirect| RedirectController
     AuthController --> UserService
     UrlController --> UrlService
     RedirectController --> UrlService
